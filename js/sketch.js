@@ -62,6 +62,12 @@ function draw() {
         }
     }
 
+    // draw bounding box
+    noFill();
+    stroke(50);
+    strokeWeight(3);
+    rect(0, 0, width, height);
+
     // Regulate speeds
     regulateSpeeds();
 
