@@ -24,7 +24,7 @@ function setup() {
     borderBuffer = ballSize / 2;
 
     numSquares = 10;
-    squareSize = width / squareSize;
+    squareSize = width / numSquares;
 
     squareColors = Array(numSquares)
         .fill()
