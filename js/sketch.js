@@ -82,6 +82,7 @@ function draw() {
     checkBounce2();
 
     // Draw balls
+    noStroke();
     fill(0);
     ellipse(x1, y1, ballSize, ballSize);
 
