@@ -13,11 +13,7 @@ let x1v, y1v, x2v, y2v;
 let minSpeed, maxSpeed;
 
 function setup() {
-    createCanvas(500, 500).parent('sketch-container');
-
-    // let containerRect = document.getElementById('sketch-container').getBoundingClientRect();
-    // resizeCanvas(containerRect.width, containerRect.width);
-    // text(containerRect.width, 10, 10);
+    createCanvas(document.getElementById('sketch-container').getBoundingClientRect().width, document.getElementById('sketch-container').getBoundingClientRect().width).parent('sketch-container');
 
     background(120);
 

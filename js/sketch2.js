@@ -3,6 +3,6 @@ function setup() {
 }
 
 function draw() {
-    fill(0);
+    fill(200);
     ellipse(width / 2, height / 2, width, height);
 }
