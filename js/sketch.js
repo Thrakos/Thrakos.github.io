@@ -19,7 +19,7 @@ function setup() {
 
     frameRate(60);
 
-    ballSize = 20;
+    ballSize = width / 25;
     ballRadius = ballSize / 2;
     borderBuffer = ballSize / 2;
 
@@ -36,10 +36,10 @@ function setup() {
     x2 = width - 30;
     y2 = 30;
 
-    x1v = 3;
-    y1v = -3;
-    x2v = 3;
-    y2v = 3;
+    x1v = width / 166;
+    y1v = -width / 166;
+    x2v = width / 166;
+    y2v = width / 166;
 
     minSpeed = 2.5;
     maxSpeed = 5.0;
