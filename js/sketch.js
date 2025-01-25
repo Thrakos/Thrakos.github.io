@@ -41,8 +41,8 @@ function setup() {
     x2v = width / 166;
     y2v = width / 166;
 
-    minSpeed = 2.5;
-    maxSpeed = 5.0;
+    minSpeed = width/200;
+    maxSpeed = width/100;
 
     for (let c = 0; c < numSquares; c++) {
         for (let r = c; r < numSquares; r++) {
