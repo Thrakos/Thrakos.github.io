@@ -26,8 +26,8 @@ function setup() {
     ballRadius = ballSize / 2;
     borderBuffer = ballSize / 2;
 
-    squareSize = 50;
-    numSquares = width / squareSize;
+    numSquares = 10;
+    squareSize = width / squareSize;
 
     squareColors = Array(numSquares)
         .fill()
