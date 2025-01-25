@@ -16,7 +16,7 @@ function setup() {
     createCanvas(500, 500).parent('sketch-container');
 
     let containerRect = document.getElementById('sketch-container').getBoundingClientRect();
-    resizeCanvas(containerRect.width, containerRect.height);
+    resizeCanvas(containerRect.width, containerRect.width);
 
     background(120);
 
