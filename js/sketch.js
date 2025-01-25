@@ -14,6 +14,10 @@ let minSpeed, maxSpeed;
 
 function setup() {
     createCanvas(500, 500).parent('sketch-container');
+
+    let containerRect = document.getElementById('sketch-container').getBoundingClientRect();
+    resizeCanvas(containerRect.width, containerRect.height);
+
     background(120);
 
     frameRate(60);
