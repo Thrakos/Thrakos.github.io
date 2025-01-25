@@ -14,7 +14,7 @@ let minSpeed, maxSpeed;
 
 function setup() {
     createCanvas(500, 500);
-    // canvas.parent('sketch-container');
+    canvas.parent('sketch-container');
     background(120);
 
     frameRate(60);
