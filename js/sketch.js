@@ -12,8 +12,10 @@ let x1v, y1v, x2v, y2v;
 
 let minSpeed, maxSpeed;
 
+let canvas;
+
 function setup() {
-    createCanvas(500, 500);
+    canvas = createCanvas(500, 500);
     canvas.parent('sketch-container');
     background(120);
 
