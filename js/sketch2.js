@@ -62,8 +62,8 @@ const sketch2 = (p) => {
     };
 
     p.regulateSpeed = () => {
-        if (ball.v.mag() > p.width / 30) {
-            ball.v.setMag(p.width / 30);
+        if (ball.v.mag() > p.width / 37) {
+            ball.v.setMag(p.width / 37);
         }
     };
 
