@@ -1,4 +1,4 @@
-const sketch = (p) => {
+const sketch2 = (p) => {
 
     let ball = {
         x: undefined,       // Ball's initial x position
@@ -62,8 +62,8 @@ const sketch = (p) => {
     };
 
     p.regulateSpeed = () => {
-        if (ball.v.mag() > width / 30) {
-            ball.v.setMag(width / 30);
+        if (ball.v.mag() > p.width / 30) {
+            ball.v.setMag(p.width / 30);
         }
     };
 
@@ -117,7 +117,7 @@ const sketch = (p) => {
 
                 if (div != 0) {
                     ball.v.x *= 1 + (p.width / div);
-                    ball.v.y * - 1 + (p.width / div);
+                    ball.v.y *= - 1 + (p.width / div);
                 }
 
             }
