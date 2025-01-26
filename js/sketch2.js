@@ -17,7 +17,7 @@ let bigCircle = {
 let gravity = 0.2;
 
 function setup() {
-    createCanvas(document.getElementById('sketch-container').getBoundingClientRect().width, document.getElementById('sketch-container').getBoundingClientRect().width).parent('sketch-container');
+    createCanvas(document.getElementById('sketch-2-container').getBoundingClientRect().width, document.getElementById('sketch-2-container').getBoundingClientRect().width).parent('sketch-container');
 
     ball.x = width / 2 + 1;
     ball.y = height / 3;
