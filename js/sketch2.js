@@ -117,7 +117,7 @@ const sketch2 = (p) => {
 
                 if (div != 0) {
                     ball.v.x *= 1 + (p.width / div);
-                    ball.v.y *= - 1 + (p.width / div);
+                    ball.v.y *= 1 + (p.width / div);
                 }
 
             }
