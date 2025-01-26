@@ -19,11 +19,11 @@ const sketch = (p) => {
     let gravity = 0.2;
 
     p.setup = () => {
-        createCanvas(document.getElementById('sketch-2-container').getBoundingClientRect().width, document.getElementById('sketch-2-container').getBoundingClientRect().width).parent('sketch-2-container');
+        p.createCanvas(document.getElementById('sketch-2-container').getBoundingClientRect().width, document.getElementById('sketch-2-container').getBoundingClientRect().width).parent('sketch-2-container');
 
         ball.x = p.width / 2 + 1;
         ball.y = p.height / 3;
-        ball.v = createVector(random(-p.width / 125, p.width / 125), random(-p.width / 80, -p.width / 250));
+        ball.v = p.createVector(p.random(-p.width / 125, p.width / 125), p.random(-p.width / 80, -p.width / 250));
         ball.radius = p.width / 100;
         ball.grow = 1;
         ball.growthRate = p.width / 250;
