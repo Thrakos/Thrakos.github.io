@@ -15,36 +15,34 @@ const sketch = (p) => {
     let minSpeed, maxSpeed;
 
     p.setup = () => {
-        createCanvas(document.getElementById('sketch-container').getBoundingClientRect().width, document.getElementById('sketch-container').getBoundingClientRect().width).parent('sketch-container');
+        p.createCanvas(document.getElementById('sketch-container').getBoundingClientRect().width, document.getElementById('sketch-container').getBoundingClientRect().width).parent('sketch-container');
 
-        background(120);
+        p.background(120);
 
-        frameRate(60);
-
-        ballSize = width / 25;
+        ballSize = p.width / 25;
         ballRadius = ballSize / 2;
         borderBuffer = ballSize / 2;
 
         numSquares = 10;
-        squareSize = width / numSquares;
+        squareSize = p.width / numSquares;
 
         squareColors = Array(numSquares)
             .fill()
             .map(() => Array(numSquares).fill(0));
 
         x1 = 30;
-        y1 = height - 30;
+        y1 = p.height - 30;
 
-        x2 = width - 30;
+        x2 = p.width - 30;
         y2 = 30;
 
-        x1v = width / 166;
-        y1v = -width / 166;
-        x2v = width / 166;
-        y2v = width / 166;
+        x1v = p.width / 166;
+        y1v = -p.width / 166;
+        x2v = p.width / 166;
+        y2v = p.width / 166;
 
-        minSpeed = width / 200;
-        maxSpeed = width / 100;
+        minSpeed = p.width / 200;
+        maxSpeed = p.width / 100;
 
         for (let c = 0; c < numSquares; c++) {
             for (let r = c; r < numSquares; r++) {
@@ -54,24 +52,24 @@ const sketch = (p) => {
     };
 
     p.draw = () => {
-        noStroke();
+        p.noStroke();
 
         // Draw squares
         for (let c = 0; c < numSquares; c++) {
             for (let r = 0; r < numSquares; r++) {
-                fill(squareColors[r][c]);
-                rect(c * squareSize, r * squareSize, squareSize, squareSize);
+                p.fill(squareColors[r][c]);
+                p.rect(c * squareSize, r * squareSize, squareSize, squareSize);
             }
         }
 
         // draw bounding box
-        noFill();
-        stroke(50);
-        strokeWeight(3);
-        rect(0, 0, width, height);
+        p.noFill();
+        p.stroke(50);
+        p.strokeWeight(3);
+        p.rect(0, 0, p.width, p.height);
 
         // Regulate speeds
-        regulateSpeeds();
+        p.regulateSpeeds();
 
         // Update positions
         x1 += x1v;
@@ -80,16 +78,16 @@ const sketch = (p) => {
         y2 += y2v;
 
         // Check bounce
-        checkBounce1();
-        checkBounce2();
+        p.checkBounce1();
+        p.checkBounce2();
 
         // Draw balls
-        noStroke();
-        fill(0);
-        ellipse(x1, y1, ballSize, ballSize);
+        p.noStroke();
+        p.fill(0);
+        p.ellipse(x1, y1, ballSize, ballSize);
 
-        fill(255);
-        ellipse(x2, y2, ballSize, ballSize);
+        p.fill(255);
+        p.ellipse(x2, y2, ballSize, ballSize);
     };
 
     p.regulateSpeeds = () => {
@@ -98,17 +96,17 @@ const sketch = (p) => {
         let x2vn = x2v < 0 ? -1 : 1;
         let y2vn = y2v < 0 ? -1 : 1;
 
-        if (abs(x1v) < minSpeed) x1v = minSpeed * x1vn;
-        if (abs(x1v) > maxSpeed) x1v = maxSpeed * x1vn;
+        if (p.abs(x1v) < minSpeed) x1v = minSpeed * x1vn;
+        if (p.abs(x1v) > maxSpeed) x1v = maxSpeed * x1vn;
 
-        if (abs(y1v) < minSpeed) y1v = minSpeed * y1vn;
-        if (abs(y1v) > maxSpeed) y1v = maxSpeed * y1vn;
+        if (p.abs(y1v) < minSpeed) y1v = minSpeed * y1vn;
+        if (p.abs(y1v) > maxSpeed) y1v = maxSpeed * y1vn;
 
-        if (abs(x2v) < minSpeed) x2v = minSpeed * x2vn;
-        if (abs(x2v) > maxSpeed) x2v = maxSpeed * x2vn;
+        if (p.abs(x2v) < minSpeed) x2v = minSpeed * x2vn;
+        if (p.abs(x2v) > maxSpeed) x2v = maxSpeed * x2vn;
 
-        if (abs(y2v) < minSpeed) y2v = minSpeed * y2vn;
-        if (abs(y2v) > maxSpeed) y2v = maxSpeed * y2vn;
+        if (p.abs(y2v) < minSpeed) y2v = minSpeed * y2vn;
+        if (p.abs(y2v) > maxSpeed) y2v = maxSpeed * y2vn;
     };
 
     p.checkBounce1 = () => {
@@ -117,9 +115,9 @@ const sketch = (p) => {
             x1 = borderBuffer;
             return;
         }
-        if (x1 >= width - borderBuffer) {
+        if (x1 >= p.width - borderBuffer) {
             x1v *= -1;
-            x1 = width - borderBuffer;
+            x1 = p.width - borderBuffer;
             return;
         }
 
@@ -129,9 +127,9 @@ const sketch = (p) => {
             return;
         }
 
-        if (y1 >= height - borderBuffer) {
+        if (y1 >= p.height - borderBuffer) {
             y1v *= -1;
-            y1 = height - borderBuffer;
+            y1 = p.height - borderBuffer;
             return;
         }
 
@@ -191,8 +189,8 @@ const sketch = (p) => {
                 }
                 if (toggle) {
                     squareColors[Math.floor(rows[i])][Math.floor(cols[i])] = 255;
-                    x1v *= 1 + (random(0.4) - 0.2);
-                    y1v *= 1 + (random(0.4) - 0.2);
+                    x1v *= 1 + (p.random(0.4) - 0.2);
+                    y1v *= 1 + (p.random(0.4) - 0.2);
                 }
 
                 if (i == 0 || i == 4) {
@@ -264,9 +262,9 @@ const sketch = (p) => {
             x2 = borderBuffer;
             return;
         }
-        if (x2 >= width - borderBuffer) {
+        if (x2 >= p.width - borderBuffer) {
             x2v *= -1;
-            x2 = width - borderBuffer;
+            x2 = p.width - borderBuffer;
             return;
         }
 
@@ -276,9 +274,9 @@ const sketch = (p) => {
             return;
         }
 
-        if (y2 >= height - borderBuffer) {
+        if (y2 >= p.height - borderBuffer) {
             y2v *= -1;
-            y2 = height - borderBuffer;
+            y2 = p.height - borderBuffer;
             return;
         }
 
@@ -337,8 +335,8 @@ const sketch = (p) => {
                     }
                 }
                 if (toggle) {
-                    x2v *= 1 + (random(0.4) - 0.2);
-                    y2v *= 1 + (random(0.4) - 0.2);
+                    x2v *= 1 + (p.random(0.4) - 0.2);
+                    y2v *= 1 + (p.random(0.4) - 0.2);
                     squareColors[Math.floor(rows[i])][Math.floor(cols[i])] = 0;
                 }
 
