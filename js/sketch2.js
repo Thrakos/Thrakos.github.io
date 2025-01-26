@@ -62,11 +62,9 @@ const sketch = (p) => {
     };
 
     p.regulateSpeed = () => {
-        let velocity = p.createVector(ball.vx, ball.vy);
-        if (velocity.mag() > width / 30) {
-            velocity.setMag(width / 30);
+        if (ball.v.mag() > width / 30) {
+            ball.v.setMag(width / 30);
         }
-        ball.v.add(velocity);
     };
 
     p.calculateCollision = () => {
@@ -84,7 +82,7 @@ const sketch = (p) => {
             ball.v.x -= 2 * dotV * normalV.x;
             ball.v.y -= 2 * dotV * normalV.y;
 
-            onCollision();
+            p.onCollision();
 
             // Reposition the ball slightly inside the larger circle to prevent sticking
             let overlap = distance + ball.radius - bigCircle.radius;
