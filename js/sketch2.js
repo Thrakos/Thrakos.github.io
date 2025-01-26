@@ -54,6 +54,7 @@ const sketch2 = (p) => {
         p.calculateCollision();
 
         // make sure ball is not above max speed
+        p.regulateSpeed();
 
         // Draw the ball
         p.fill(255);
@@ -62,8 +63,8 @@ const sketch2 = (p) => {
     };
 
     p.regulateSpeed = () => {
-        if (ball.v.mag() > p.width / 37) {
-            ball.v.setMag(p.width / 37);
+        if (ball.v.mag() > p.width / 33) {
+            ball.v.setMag(p.width / 33);
         }
     };
 
