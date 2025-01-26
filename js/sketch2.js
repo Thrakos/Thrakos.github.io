@@ -21,28 +21,28 @@ const sketch = (p) => {
     p.setup = () => {
         createCanvas(document.getElementById('sketch-2-container').getBoundingClientRect().width, document.getElementById('sketch-2-container').getBoundingClientRect().width).parent('sketch-2-container');
 
-        ball.x = width / 2 + 1;
-        ball.y = height / 3;
-        ball.v = createVector(random(-width / 125, width / 125), random(-width / 80, -width / 250));
-        ball.radius = width / 100;
+        ball.x = p.width / 2 + 1;
+        ball.y = p.height / 3;
+        ball.v = createVector(random(-p.width / 125, p.width / 125), random(-p.width / 80, -p.width / 250));
+        ball.radius = p.width / 100;
         ball.grow = 1;
-        ball.growthRate = width / 250;
-        ball.minRadius = width / 100;
+        ball.growthRate = p.width / 250;
+        ball.minRadius = p.width / 100;
 
-        bigCircle.x = width / 2;
-        bigCircle.y = width / 2;
-        bigCircle.radius = width * 5 / 11;
+        bigCircle.x = p.width / 2;
+        bigCircle.y = p.width / 2;
+        bigCircle.radius = p.width * 5 / 11;
 
     };
 
     p.draw = () => {
-        background(0);
+        p.background(0);
 
         // Draw the larger circle
-        noFill();
-        stroke(255);
-        strokeWeight(3);
-        circle(bigCircle.x, bigCircle.y, bigCircle.radius * 2);
+        p.noFill();
+        p.stroke(255);
+        p.strokeWeight(3);
+        p.circle(bigCircle.x, bigCircle.y, bigCircle.radius * 2);
 
         // update ball
         ball.v.y += gravity;
@@ -51,18 +51,18 @@ const sketch = (p) => {
         ball.y += ball.v.y;
 
         // check collision
-        calculateCollision();
+        p.calculateCollision();
 
         // make sure ball is not above max speed
 
         // Draw the ball
-        fill(255);
-        noStroke();
-        circle(ball.x, ball.y, ball.radius * 2);
+        p.fill(255);
+        p.noStroke();
+        p.circle(ball.x, ball.y, ball.radius * 2);
     };
 
     p.regulateSpeed = () => {
-        let velocity = createVector(ball.vx, ball.vy);
+        let velocity = p.createVector(ball.vx, ball.vy);
         if (velocity.mag() > width / 30) {
             velocity.setMag(width / 30);
         }
@@ -73,11 +73,11 @@ const sketch = (p) => {
         // Check for collision with the larger circle
         let dx = ball.x - bigCircle.x;
         let dy = ball.y - bigCircle.y;
-        let distance = sqrt(dx * dx + dy * dy);
+        let distance = p.sqrt(dx * dx + dy * dy);
 
         if (distance + ball.radius > bigCircle.radius) {
             // Calculate the normal vector at the point of collision
-            let normalV = createVector(dx, dy).normalize();
+            let normalV = p.createVector(dx, dy).normalize();
 
             // Reflect the velocity using the formula
             let dotV = ball.v.dot(normalV);
@@ -102,28 +102,24 @@ const sketch = (p) => {
             ball.grow *= -1;
         }
 
-        if (ball.y > height * 3 / 5 && ball.v.mag() < width / 100) {
-            ball.v.setMag(width / 75);
-            print("set velocity");
-        } else if (ball.x >= width / 3 && ball.x <= width * 2 / 3) {
-            if (ball.y > height * 3 / 5) {
+        if (ball.y > p.height * 3 / 5 && ball.v.mag() < p.width / 100) {
+            ball.v.setMag(p.width / 75);
+        } else if (ball.x >= p.width / 3 && ball.x <= p.width * 2 / 3) {
+            if (ball.y > p.height * 3 / 5) {
 
                 let div = 0;
 
-                if (ball.y > height * 3 / 4 && ball.grow == -1) {
+                if (ball.y > p.height * 3 / 4 && ball.grow == -1) {
                     div = 8000;
-                    print("green");
-                } else if (ball.grow == -1 && ball.v.mag() < width / 50) {
+                } else if (ball.grow == -1 && ball.v.mag() < p.width / 50) {
                     div = 7000;
-                    print("shrink");
-                } else if (ball.v.mag() < width / 60) {
+                } else if (ball.v.mag() < p.width / 60) {
                     div = 10000;
-                    print("grow");
                 }
 
                 if (div != 0) {
-                    ball.v.x *= 1 + (width / div);
-                    ball.v.y * - 1 + (width / div);
+                    ball.v.x *= 1 + (p.width / div);
+                    ball.v.y * - 1 + (p.width / div);
                 }
 
             }
